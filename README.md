@@ -20,3 +20,12 @@ Now you can access the microservices at: http://localhost:8080/users-microservic
 
 
 
+
+
+--------------------------- @authors
+
+unaizuzu@opendeusto.es
+g.virum@opendeusto.es
+ruben.sancor@opendeusto.es
+aritz.badiola@opendeusto.es
+
