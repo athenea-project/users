@@ -17,3 +17,10 @@ Microservice that contains user management for Athenea project. Build on top of:
 https://www.mkyong.com/maven/how-to-deploy-maven-based-war-file-to-tomcat/
 
 Now you can access the microservices at: http://localhost:8080/users-microservice/
+
+--------------------------- @authors
+
+unaizuzu@opendeusto.es
+g.virum@opendeusto.es
+ruben.sancor@opendeusto.es
+aritz.badiola@opendeusto.es
