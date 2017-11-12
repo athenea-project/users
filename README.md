@@ -1,3 +1,5 @@
+https://travis-ci.org/athenea-project/users.svg?branch=master
+
 # users-microservice
 
 Microservice that contains user management for Athenea project. Build on top of:
