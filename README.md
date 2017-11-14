@@ -1,4 +1,8 @@
+
 # users-microservice
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e06750c29ff042259e6ebe66085a7c27)](https://www.codacy.com/app/unaizuzu/users?utm_source=github.com&utm_medium=referral&utm_content=athenea-project/users&utm_campaign=badger)
+[![Build Status](https://travis-ci.org/athenea-project/users.svg?branch=master)](https://travis-ci.org/athenea-project/users.svg?branch=master)
 
 Microservice that contains user management for Athenea project. Build on top of:
 
