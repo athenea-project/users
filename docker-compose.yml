@@ -1,0 +1,27 @@
+version: '2'
+
+
+services:
+
+    # MySQL database shared with tomcat containers.
+    db:
+      image: mysql
+      environment:
+        MYSQL_ROOT_PASSWORD: admin
+        MYSQL_DATABASE: ATHENEA
+        MYSQL_USER: athenea
+        MYSQL_PASSWORD: athenea
+      volumes:
+        - "./sql:/docker-entrypoint-initdb.d"
+
+    # First node of the first Tomcat virtual host.
+    tomcat:
+      image: tomcat
+      ports:
+        - "8080:8080"
+      volumes:
+        - ./target/users-1.0-SNAPSHOT.war:/usr/local/tomcat/webapps/users-microservice.war
+      links:
+        - db:db
+      depends_on:
+        - "db"
