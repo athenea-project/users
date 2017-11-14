@@ -7,6 +7,9 @@
 # BlueJ files
 *.ctxt
 
+# allow war
+!target/users-1.0-SNAPSHOT.war
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
@@ -34,5 +37,3 @@ target/
 .DS_Store
 src/test/
 
-# allow war
-!target/users-1.0-SNAPSHOT.war
