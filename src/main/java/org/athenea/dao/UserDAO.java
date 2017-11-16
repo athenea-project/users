@@ -20,4 +20,18 @@ public interface UserDAO {
    */
   List<UserVO> findAllUsers();
 
+  /**
+   * Insert a user into DB
+   * @param email
+   * @param name
+   * @param username
+   * @param password
+   * @param phone_number
+   */
+  void insertUser(String email,
+      String name,
+      String username,
+      String password,
+      int phone_number);
+
 }

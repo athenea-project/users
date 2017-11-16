@@ -36,4 +36,10 @@ public class UserImpl implements UserDAO {
   public List<UserVO> findAllUsers() {
     return userMapper.getUsers();
   }
+
+  @Override
+  public void insertUser(String email, String name, String username, String password,
+      int phone_number) {
+
+  }
 }
