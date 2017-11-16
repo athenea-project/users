@@ -80,7 +80,8 @@
   window.onload = function () {
     // Build a system
     const ui = SwaggerUIBundle({
-      url: "http://www.athenea-project.org/users-microservice/api/swagger.json",
+      //url: "http://www.athenea-project.org/users-microservice/api/swagger.json",
+      url: "http://localhost:8080/users-microservice/api/swagger.json",
       dom_id: '#swagger-ui',
       presets: [
         SwaggerUIBundle.presets.apis,

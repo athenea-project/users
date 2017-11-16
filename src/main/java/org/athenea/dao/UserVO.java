@@ -11,12 +11,15 @@ public class UserVO {
   private String username;
   private int phone_number;
 
-  public UserVO(String email, String password, String name, String username, int phone_number) {
+  public UserVO(String email, String name, String username, String password, int phone_number) {
     this.email = email;
     this.password = password;
     this.name = name;
     this.username = username;
     this.phone_number = phone_number;
+  }
+
+  public UserVO() {
   }
 
   public String getEmail() {

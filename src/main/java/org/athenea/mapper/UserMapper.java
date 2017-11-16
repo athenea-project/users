@@ -26,7 +26,15 @@ public interface UserMapper {
   @Select("SELECT * FROM USER WHERE EMAIL = #{email}")
   UserVO getUserByEmail(@Param("email") String email);
 
-  @Insert("INSERT INTO USER (`EMAIL`, `NAME`, `USERNAME`, `PASSWORD`, `PHONE_NUMBER`) VALUES (#{email}, #{name}, #{username}, #{password}, #{phone_number}); ")
+  /**
+   * Insert user into DB
+   * @param email
+   * @param name
+   * @param username
+   * @param password
+   * @param phone_number
+   */
+  @Insert("INSERT INTO USER (EMAIL, NAME, USERNAME, PASSWORD, PHONE_NUMBER) VALUES (#{email}, #{name}, #{username}, #{password}, #{phone_number})")
   void insertUser(@Param("email") String email,
         @Param("name") String name,
         @Param("username") String username,

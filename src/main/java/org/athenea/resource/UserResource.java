@@ -6,7 +6,6 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import java.util.List;
-import javax.management.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
@@ -17,7 +16,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.athenea.dao.UserDAO;
 import org.athenea.dao.UserVO;
-import org.json.JSONObject;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -28,9 +26,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 @Api(value = "user", description = "Retrieve users.")
 public class UserResource {
 
-  private static final ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");   // Application context to load Spring
+  private static final ApplicationContext context = new ClassPathXmlApplicationContext(
+      "applicationContext.xml");   // Application context to load Spring
 
-  private static final UserDAO userDAO = (UserDAO) context.getBean("userDAO");    // User bean to work with
+  private static final UserDAO userDAO = (UserDAO) context
+      .getBean("userDAO");    // User bean to work with
 
   /**
    * Get all users from DB.
@@ -76,14 +76,15 @@ public class UserResource {
   @ApiResponses(value = {@ApiResponse(code = 404, message = "Could't insert data")})
   public Response insertUser(@ApiParam(required = true) UserVO userdata) {
 
+    //TODO: Properly handle different cases of DB working or not
 
     // Try to create User from data body
-    try{
-  userDAO.insertUser(userdata.getEmail(),
-      userdata.getName(),
-      userdata.getUsername(),
-      userdata.getPassword(),
-      userdata.getPhone_number());
+    try {
+      userDAO.insertUser(userdata.getEmail(),
+          userdata.getName(),
+          userdata.getUsername(),
+          userdata.getPassword(),
+          userdata.getPhone_number());
 
       return Response.status(200).entity("OK").build();
 
@@ -93,8 +94,6 @@ public class UserResource {
     }
 
   }
-
-
 
 
 }
