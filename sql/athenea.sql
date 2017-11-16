@@ -24,18 +24,67 @@ TO athenea@localhost
 IDENTIFIED BY 'athenea';
 
 --
--- Table structure for table `USERS`
+-- Table structure for tables `STUDENT`,`PROFESSOR`,`COURSE`,`TEACHES`,`ENROLLMENT`
 --
 
-DROP TABLE IF EXISTS `USERS`;
+DROP TABLE IF EXISTS `STUDENT`;
+DROP TABLE IF EXISTS `PROFESSOR`;
+DROP TABLE IF EXISTS `COURSE`;
+DROP TABLE IF EXISTS `TEACHES`;
+DROP TABLE IF EXISTS `ENROLLMENT`;
+
  SET @saved_cs_client = @@character_set_client;
  SET character_set_client = utf8;
-CREATE TABLE `USERS` (
-  `EMAIL`    VARCHAR(20)  NOT NULL,
-  `PASSWORD`     VARCHAR(20) NOT NULL,
-  `NAME` VARCHAR(30)  NOT NULL,
+ 
+CREATE TABLE `STUDENT` (
+  `EMAIL`	VARCHAR(40)  NOT NULL,
+  `NAME`	VARCHAR(30)  NOT NULL,
+  `USERNAME`	VARCHAR(30)  NOT NULL UNIQUE,
+  `PASSWORD`	VARCHAR(20) NOT NULL,
+  `PHONE_NUMBER`	INT(9),
   PRIMARY KEY (`EMAIL`)
 )
+
+CREATE TABLE `PROFESSOR` (
+  `EMAIL`	VARCHAR(40)  NOT NULL,
+  `NAME`	VARCHAR(30)  NOT NULL,
+  `USERNAME`	VARCHAR(30)  NOT NULL UNIQUE,
+  `PASSWORD`	VARCHAR(20) NOT NULL,
+  `PHONE_NUMBER`	INT(9),
+  `ADDRESS`	VARCHAR(60),
+  PRIMARY KEY (`EMAIL`)
+)
+
+CREATE TABLE `COURSE` (
+  `CODE`	INT(8)  NOT NULL,
+  `NAME`	VARCHAR(30)  NOT NULL,
+  `AREA`	VARCHAR(30)  NOT NULL,
+  `DESCRIPTION`	VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`CODE`)
+)
+
+CREATE TABLE `TEACHES` (
+  `PROF_ID`	VARCHAR(40)  NOT NULL,
+  `COURSE_ID`	INT(8)  NOT NULL,
+  `DETAIL`	VARCHAR(240)  NOT NULL,
+  `COST`	INT(5) NOT NULL,
+  FOREIGN KEY (`PROF_ID`) REFERENCES PROFESSOR(`EMAIL`),
+  FOREIGN KEY (`COURSE_ID`) REFERENCES COURSE(`CODE`),
+  PRIMARY KEY (`PROF_ID`,`COURSE_ID`)
+)
+
+CREATE TABLE `ENROLLMENT` (
+  `STUD_ID`	VARCHAR(40)  NOT NULL,
+  `PROF_ID`	VARCHAR(40)  NOT NULL,
+  `COURSE_ID`	INT(8)  NOT NULL,
+  `DATE`	VARCHAR(10)  NOT NULL,
+  `COST`	INT(5) NOT NULL,
+  FOREIGN KEY (`STUD_ID`) REFERENCES STUDENT(`EMAIL`),
+  FOREIGN KEY (`PROF_ID`) REFERENCES PROFESSOR(`EMAIL`),
+  FOREIGN KEY (`COURSE_ID`) REFERENCES COURSE(`CODE`),
+  PRIMARY KEY (`STUD_ID`,`PROF_ID`,`COURSE_ID`,`DATE`)
+)
+
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
  SET character_set_client = @saved_cs_client;
@@ -44,13 +93,42 @@ CREATE TABLE `USERS` (
 -- Dumping data for table `USERS`
 --
 
-LOCK TABLES `USERS` WRITE;
-ALTER TABLE `USERS`
+LOCK TABLES `STUDENT` WRITE;
+ALTER TABLE `STUDENT`
   DISABLE KEYS;
-INSERT INTO `USERS`
-VALUES ('unaizuzu@gmail.com', 'toor', 'Unai'), ('ruben.sancor@opendeusto.es', 'lol', 'Ruben'),
-  ('g.virum@opendeusto.es', 'toor12', 'Gaizka'), ('aritz.badiola@opendeusto.es', '1234', 'Aritz');
-ALTER TABLE `USERS`
+INSERT INTO `STUDENT`
+VALUES ('unaizuzu@gmail.com', 'Unai', 'unaiElParguela', 'jessicaTeAmoJoder', 657384929), (ruben.sancor@opendeusto.es', 'Ruben', 'rubenSanches', 'albergue123', 432561234),
+  ('g.virum@opendeusto.es', 'Gaizka', 'gaizkaTheShowman', '12345', 938203947), ('aritz.badiola@opendeusto.es', 'Aritz', 'putoAmoa', '123456789', 657493049);
+ALTER TABLE `STUDENT`
+
+LOCK TABLES `PROFESSOR` WRITE;
+ALTER TABLE `PROFESSOR`
+  DISABLE KEYS;
+INSERT INTO `PROFESSOR`
+VALUES ('pabloshows@gmail.com', 'Pablo', 'amorYunidad', 'batbihirulau', 483940583, 'Un pais multicolor, oficinas Amigoaro');
+ALTER TABLE `PROFESSOR`
+
+LOCK TABLES `COURSE` WRITE;
+ALTER TABLE `COURSE`
+  DISABLE KEYS;
+INSERT INTO `COURSE`
+VALUES (1, 'Bases de datos', 'Ingenieria', 'Curso que trata las bases del lenguaje SQL');
+ALTER TABLE `COURSE`
+
+LOCK TABLES `TEACHES` WRITE;
+ALTER TABLE `TEACHES`
+  DISABLE KEYS;
+INSERT INTO `TEACHES`
+VALUES ('pabloshows@gmail.com', 1, 'El curso se desarrollara poniendo enfasis en practicas.', 20);
+ALTER TABLE `TEACHES`
+
+LOCK TABLES `ENROLLMENT` WRITE;
+ALTER TABLE `ENROLLMENT`
+  DISABLE KEYS;
+INSERT INTO `ENROLLMENT`
+VALUES ('ruben.sancor@opendeusto.es', 'pabloshows@gmail.com', 1, '10/11/2017', 20);
+ALTER TABLE `ENROLLMENT`
+
 ENABLE KEYS;
 UNLOCK TABLES;
 SET TIME_ZONE = @OLD_TIME_ZONE;
