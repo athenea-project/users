@@ -24,7 +24,7 @@ public class Bootstrap extends HttpServlet {
     beanConfig.setVersion("1.0.0");
     beanConfig.setContact("support@athenea.org");
     beanConfig.setSchemes(new String[]{"http"});
-    beanConfig.setHost("vps478091.ovh.net:8080/users-microservice");
+    beanConfig.setHost("www.athenea-project.org/users-microservice");
     beanConfig.setBasePath("api");
     beanConfig.setResourcePackage("org.athenea.resource");
     beanConfig.setScan(true);
