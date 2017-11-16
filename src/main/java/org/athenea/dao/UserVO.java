@@ -8,6 +8,8 @@ public class UserVO {
   private String email;   // primary key
   private String password;
   private String name;
+  private String username;
+  private String phone_number;
 
   public UserVO(String email, String password, String name) {
     this.email = email;
@@ -37,5 +39,21 @@ public class UserVO {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public String getPhone_number() {
+    return phone_number;
+  }
+
+  public void setPhone_number(String phone_number) {
+    this.phone_number = phone_number;
   }
 }
