@@ -6,6 +6,7 @@ services:
     # MySQL database shared with tomcat containers.
     db:
       image: mysql
+      restart: always
       environment:
         MYSQL_ROOT_PASSWORD: admin
         MYSQL_DATABASE: ATHENEA
@@ -16,6 +17,7 @@ services:
 
     # First node of the first Tomcat virtual host.
     tomcat:
+      restart: always
       image: tomcat
       ports:
         - "8080:8080"
