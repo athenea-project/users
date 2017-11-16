@@ -10,9 +10,9 @@ ON ATHENEA.*
 TO athenea@'%'
 IDENTIFIED BY 'athenea';
 
-DROP TABLE IF EXISTS USERS;
+DROP TABLE IF EXISTS USER;
 
-CREATE TABLE `USERS` (
+CREATE TABLE `USER` (
   `EMAIL` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
   `NAME` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `USERNAME` varchar(30) COLLATE utf8_unicode_ci NOT NULL,

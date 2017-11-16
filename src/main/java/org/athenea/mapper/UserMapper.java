@@ -14,7 +14,7 @@ public interface UserMapper {
    * Get all Users
    * @return every user in a List
    */
-  @Select("SELECT * FROM USERS")
+  @Select("SELECT * FROM USER")
   List<UserVO> getUsers();
 
   /**
@@ -22,6 +22,6 @@ public interface UserMapper {
    * @param email email of the User (primary key)
    * @return a single User
    */
-  @Select("SELECT * FROM USERS WHERE EMAIL = #{email}")
+  @Select("SELECT * FROM USER WHERE EMAIL = #{email}")
   UserVO getUserByEmail(@Param("email") String email);
 }
