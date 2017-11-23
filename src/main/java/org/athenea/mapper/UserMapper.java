@@ -15,7 +15,7 @@ public interface UserMapper {
    * Get all Users
    * @return every user in a List
    */
-  @Select("SELECT * FROM USER")
+  @Select("SELECT EMAIL, NAME, USERNAME, PHONE_NUMBER FROM USER")
   List<UserVO> getUsers();
 
   /**
@@ -23,8 +23,32 @@ public interface UserMapper {
    * @param email email of the User (primary key)
    * @return a single User
    */
-  @Select("SELECT * FROM USER WHERE EMAIL = #{email}")
+  @Select("SELECT EMAIL, NAME, USERNAME, PHONE_NUMBER FROM USER WHERE EMAIL = #{email}")
   UserVO getUserByEmail(@Param("email") String email);
+  
+  /**
+   * Get user by email
+   * @param email email of the User (primary key)
+   * @return a single User
+   */
+  @Select("SELECT EMAIL, NAME, USERNAME, PHONE_NUMBER FROM USER WHERE USERNAME = #{username}")
+  UserVO getUserByUsername(@Param("username") String username);
+
+  /**
+   * Get user by name
+   * @param name name of the User 
+   * @return a single User
+   */
+  @Select("SELECT EMAIL, NAME, USERNAME, PHONE_NUMBER FROM USER WHERE NAME = #{name}")
+  List<UserVO> getUserByName(@Param("name") String name);
+
+  /** 
+  * Get user by phone number
+  * @param phoneNumber phone number of the User
+  * @return a single User
+  */
+  @Select("SELECT EMAIL, NAME, USERNAME, PHONE_NUMBER FROM USER WHERE PHONE_NUMBER = #{phone_number}")
+  UserVO getUserByPhoneNumber(@Param("phone_number") int phoneNumber);
 
   /**
    * Insert user into DB
@@ -35,10 +59,6 @@ public interface UserMapper {
    * @param phone_number
    */
   @Insert("INSERT INTO USER (EMAIL, NAME, USERNAME, PASSWORD, PHONE_NUMBER) VALUES (#{email}, #{name}, #{username}, #{password}, #{phone_number})")
-  void insertUser(@Param("email") String email,
-        @Param("name") String name,
-        @Param("username") String username,
-        @Param("password") String password,
-        @Param("phone_number") int phone_number
-      );
+  void insertUser(@Param("email") String email, @Param("name") String name, @Param("username") String username,
+      @Param("password") String password, @Param("phone_number") int phone_number);
 }

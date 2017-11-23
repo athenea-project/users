@@ -67,6 +67,59 @@ public class UserResource {
     return userDAO.findUserById(email);
   }
 
+  /**
+   * Get user from an email
+   *
+   * @param email primary key in DB
+   * @return a User object
+   */
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  @Path("/username")
+  @ApiResponses(value = {@ApiResponse(code = 500, message = "Error when connecting to server."),
+      @ApiResponse(code = 404, message = "No user found")})
+  @ApiOperation(value = "Returns all users.",
+      response = UserVO.class)
+  public UserVO getUserByUsername(@HeaderParam("username") String username) {
+
+    return userDAO.findUserByUsername(username);
+  }
+
+  /**
+   * Get user from an email
+   *
+   * @param email primary key in DB
+   * @return a User object
+   */
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  @Path("/phoneNumber")
+  @ApiResponses(value = {@ApiResponse(code = 500, message = "Error when connecting to server."),
+      @ApiResponse(code = 404, message = "No user found")})
+  @ApiOperation(value = "Returns all users.",
+      response = UserVO.class)
+  public UserVO getUserByPhoneNumber(@HeaderParam("number") int number) {
+
+    return userDAO.findUserByPhoneNumber(number);
+  }
+
+  /**
+   * Get user from an email
+   *
+   * @param email primary key in DB
+   * @return a User object
+   */
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  @Path("/name")
+  @ApiResponses(value = {@ApiResponse(code = 500, message = "Error when connecting to server."),
+      @ApiResponse(code = 404, message = "No user found")})
+  @ApiOperation(value = "Returns all users.",
+      response = UserVO.class)
+  public List<UserVO> getUserByName(@HeaderParam("name") String name) {
+
+    return userDAO.findUserByName(name);
+  }
 
   @POST
   @Consumes(MediaType.APPLICATION_JSON)

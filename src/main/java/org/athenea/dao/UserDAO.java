@@ -10,9 +10,22 @@ public interface UserDAO {
   /**
    * Get a single User by his/her email (primary key)
    * @param email primary  key of the user
-   * @return a single USer
+   * @return a single User
    */
   UserVO findUserById(String email);
+
+  /**
+   * Get a single User by his/her username
+   * @param username username of the User
+   * @return a single User
+   */
+  UserVO findUserByUsername(String username);
+
+  List<UserVO> findUserByName(String name);
+
+  UserVO findUserByPhoneNumber(int phone_number);
+
+
 
   /**
    * Get all Users

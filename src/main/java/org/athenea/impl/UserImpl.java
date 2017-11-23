@@ -29,6 +29,39 @@ public class UserImpl implements UserDAO {
     return userMapper.getUserByEmail(email);
   }
 
+    /**
+   * Get an user from an email
+   *
+   * @param email of the User (primary key)
+   * @return a UserVO
+   */
+  @Override
+  public UserVO findUserByUsername(String username) {
+    return userMapper.getUserByUsername(username);
+  }
+
+    /**
+   * Get an user from an email
+   *
+   * @param email of the User (primary key)
+   * @return a UserVO
+   */
+  @Override
+  public UserVO findUserByPhoneNumber(int number) {
+    return userMapper.getUserByPhoneNumber(number);
+  }
+
+    /**
+   * Get an user from an email
+   *
+   * @param email of the User (primary key)
+   * @return a UserVO
+   */
+  @Override
+  public List<UserVO> findUserByName(String name) {
+    return userMapper.getUserByName(name);
+  }
+
   /**
    * Get all Users from DB
    *
