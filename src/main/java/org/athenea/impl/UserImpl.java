@@ -80,4 +80,9 @@ public class UserImpl implements UserDAO {
       int phone_number) {
       userMapper.insertUser(email, name, username, password, phone_number);
   }
+
+  @Override
+  public UserVO findUserByUsernamePass(String username, String password) {
+	  return userMapper.getUserByUsernamePass(username, password);
+  }
 }
