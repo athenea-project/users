@@ -25,7 +25,8 @@ public interface UserDAO {
 
   UserVO findUserByPhoneNumber(int phone_number);
 
-
+  UserVO findUserByUsernamePass(String username, String password);
+  
 
   /**
    * Get all Users

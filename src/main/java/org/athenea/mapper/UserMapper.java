@@ -50,6 +50,15 @@ public interface UserMapper {
   @Select("SELECT EMAIL, NAME, USERNAME, PHONE_NUMBER FROM USER WHERE PHONE_NUMBER = #{phone_number}")
   UserVO getUserByPhoneNumber(@Param("phone_number") int phoneNumber);
 
+    /** 
+  * Get user by pass and username
+  * @param username username of the User
+  * @param password password of the User
+  * @return a single User
+  */
+  @Select("SELECT EMAIL, NAME, USERNAME, PHONE_NUMBER FROM USER WHERE username = #{username} AND password = #{password}")
+  UserVO getUserByUsernamePass(@Param("username") String username, @Param("password") String password);
+
   /**
    * Insert user into DB
    * @param email

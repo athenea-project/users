@@ -121,6 +121,25 @@ public class UserResource {
     return userDAO.findUserByName(name);
   }
 
+    /**
+   * Get user from the username and password
+   *
+   * @param username username of the User
+   * @param password password of the User
+   * @return a User object
+   */
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  @Path("/usernamePass")
+  @ApiResponses(value = {@ApiResponse(code = 500, message = "Error when connecting to server."),
+      @ApiResponse(code = 404, message = "No user found")})
+  @ApiOperation(value = "Returns a user.",
+      response = UserVO.class)
+  public UserVO getUserByUsernamePass(@HeaderParam("username") String username, @HeaderParam("password") String password) {
+
+    return userDAO.findUserByUsernamePass(username, password);
+  }
+
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   @Path("/insert")
